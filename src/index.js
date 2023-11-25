@@ -51,17 +51,36 @@ const pizzaData = [
 function App() {
   return (  
       <div>
-        <h1>La Pizza</h1> 
-        <Pizza />
+        <Header /> 
+        <Menu/>
+        <Footer />
       </div>
   )
+}
+
+function Header() {
+  return <h1>Giampi's Pizzeria</h1>
+}
+
+function Menu() {
+  return (
+    <div>
+      <h2>Menu</h2>
+      <Pizza />
+    </div>
+  )
+}
+
+function Footer() {
+  return <footer>{new Date().toLocaleTimeString()}. We're open, contact us!</footer>
 }
 
 function Pizza() {
   return (
     <div>
-      <img src="pizza/spinach" />
-
+      <img src="pizza/spinach" alt='spinach'/>
+      <h2>Pizza Spinaci</h2>
+      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
     </div>
   )
 }
