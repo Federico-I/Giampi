@@ -71,11 +71,11 @@ function Menu() {
     <main className='menu'>
       <h2>Menu</h2>
       
-      <div>
+      <ul className='pizzas'>
         {pizzaData.map((pizza)=> (
-          <Pizza foodName={pizza.name} ingredient={pizza.ingredients} imgName={pizza.photoName} />
+          <Pizza dataPizza={pizza} key={pizza.name}/>
         ))}
-      </div>
+      </ul>
       
       {/*
         <Pizza foodName="Pizza Spinaci" imgName="pizza/spinach.jpg" ingredients="Tomato, mozarella, spinach, and ricotta cheese." price={10}/>
@@ -89,14 +89,14 @@ function Menu() {
 
 function Pizza(props) {
   return (
-    <div className='pizza'>
-      <img src={props.imgName} alt={props.foodName}/>
+    <li className='pizza'>
+      <img src={props.dataPizza.imgName} alt={props.dataPizza.foodName}/>
       <div>
-        <h3>{props.foodName}</h3>
-        <p>{props.ingredient}</p>
-        <span>{props.price + 4}</span>
+        <h3>{props.dataPizza.foodName}</h3>
+        <p>{props.dataPizza.ingredient}</p>
+        <span>{props.dataPizza.price + 4}</span>
       </div>
-    </div>
+    </li>
   );
 };
 
@@ -111,7 +111,17 @@ function Footer() {
   //if(hour >= openHour && hour <= closeHour) alert("We are Open."); 
   //else alert("We are closed.");
 
-  return <footer>{new Date().toLocaleTimeString()}. We're open, contact us!</footer>
+  return (
+    <footer className='footer'>
+      {isOpen && ( 
+        <div>
+          <p>We are Open until {closeHour}hrs, otherwise</p> 
+          <button>Order</button>
+        </div>
+        )
+      }you can other online! :D
+    </footer>
+  )
 }
 
 // React 18
