@@ -67,15 +67,21 @@ function Header() {
 };
 
 function Menu() {
+
+  const pizzas = pizzaData;
+  const numPizzas = pizzas.length;
+
   return (
     <main className='menu'>
       <h2>Menu</h2>
       
-      <ul className='pizzas'>
+      {numPizzas > 0 && (
+        <ul className='pizzas'>
         {pizzaData.map((pizza)=> (
           <Pizza dataPizza={pizza} key={pizza.name}/>
         ))}
       </ul>
+      )};
       
       {/*
         <Pizza foodName="Pizza Spinaci" imgName="pizza/spinach.jpg" ingredients="Tomato, mozarella, spinach, and ricotta cheese." price={10}/>
