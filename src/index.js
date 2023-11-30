@@ -75,15 +75,25 @@ function Menu() {
     <main className='menu'>
       <h2>Menu</h2>
       
-      {numPizzas > 0 && (
+      {numPizzas > 0 ? (
         <ul className='pizzas'>
         {pizzaData.map((pizza)=> (
           <Pizza dataPizza={pizza} key={pizza.name}/>
         ))}
       </ul>
-      )};
-      
+      ) : <p>The menu is not available at the moment please but soon will be ready!</p> };   
+
       {/*
+
+      Notes : 
+      
+        Ternary operator: Conditional ? () : ()
+      
+        Conditional operator: Conditional && 
+
+
+        Can't write (If : else) inside {} in JSX, does not produce a value. Used for entire components.
+
         <Pizza foodName="Pizza Spinaci" imgName="pizza/spinach.jpg" ingredients="Tomato, mozarella, spinach, and ricotta cheese." price={10}/>
       <Pizza foodName="Pizza Funghi" imgName="pizza/funghi.jpg" ingredients="Tomato, mozarella, mushrooms, and onions." price={10}/>
       */}
@@ -94,6 +104,9 @@ function Menu() {
 };
 
 function Pizza(props) {
+
+  if (props.pizzaData.soldOut) return null;
+
   return (
     <li className='pizza'>
       <img src={props.dataPizza.imgName} alt={props.dataPizza.foodName}/>
@@ -119,13 +132,13 @@ function Footer() {
 
   return (
     <footer className='footer'>
-      {isOpen && ( 
+      {isOpen ? ( 
         <div>
-          <p>We are Open until {closeHour}hrs, otherwise</p> 
+          <p>We are Open until {closeHour}hrs</p> 
           <button>Order</button>
         </div>
         )
-      }you can other online! :D
+      : <p>Visit us between {openHour}hrs and {closeHour}hrs.</p> }you can other online! :D
     </footer>
   )
 }
