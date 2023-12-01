@@ -74,13 +74,20 @@ function Menu() {
   return (
     <main className='menu'>
       <h2>Menu</h2>
+
+     
       
       {numPizzas > 0 ? (
-        <ul className='pizzas'>
-        {pizzaData.map((pizza)=> (
-          <Pizza dataPizza={pizza} key={pizza.name}/>
-        ))}
-      </ul>
+        <React.Fragment>
+          <p>
+           Most delicious Italian dishes to choose from our amazing menue. Don't miss our chef's great quality cuisine and go for it!
+          </p>
+          <ul className='pizzas'>
+            {pizzaData.map((pizza)=> (
+            <Pizza dataPizza={pizza} key={pizza.name}/>
+            ))}
+          </ul>
+        </ React.Fragment>
       ) : <p>The menu is not available at the moment please but soon will be ready!</p> };   
 
       {/*
@@ -108,12 +115,12 @@ function Pizza({ dataPizza }) {
   if (pizzaData.soldOut) return null;
 
   return (
-    <li className='pizza'>
+    <li className={`pizza ${pizzaData.soldOut ? "sold-out" : ""}`}>
       <img src={dataPizza.imgName} alt={dataPizza.foodName}/>
       <div>
         <h3>{dataPizza.foodName}</h3>
         <p>{dataPizza.ingredient}</p>
-        <span>{dataPizza.price + 4}</span>
+        <span>{dataPizza.soldOut ? "SOLD OUIT" : pizzaData.price}</span>
       </div>
     </li>
   );
