@@ -110,17 +110,17 @@ function Menu() {
   );
 };
 
-function Pizza({ dataPizza }) {
+function Pizza({ pizzaData }) {
 
   if (pizzaData.soldOut) return null;
 
   return (
     <li className={`pizza ${pizzaData.soldOut ? "sold-out" : ""}`}>
-      <img src={dataPizza.imgName} alt={dataPizza.foodName}/>
+      <img src={pizzaData.imgName} alt={pizzaData.foodName}/>
       <div>
-        <h3>{dataPizza.foodName}</h3>
-        <p>{dataPizza.ingredient}</p>
-        <span>{dataPizza.soldOut ? "SOLD OUIT" : pizzaData.price}</span>
+        <h3>{pizzaData.foodName}</h3>
+        <p>{pizzaData.ingredient}</p>
+        <span>{pizzaData.soldOut ? "SOLD OUIT" : pizzaData.price}</span>
       </div>
     </li>
   );
